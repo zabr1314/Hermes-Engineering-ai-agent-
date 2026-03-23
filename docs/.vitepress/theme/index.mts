@@ -3,7 +3,6 @@ import './custom.css'
 import MermaidPlayground from './components/MermaidPlayground.vue'
 import DecisionTree from './components/DecisionTree.vue'
 import WorkflowExplorer from './components/WorkflowExplorer.vue'
-import mediumZoom from 'medium-zoom'
 
 export default {
   extends: DefaultTheme,
@@ -14,29 +13,52 @@ export default {
   },
   setup() {
     if (typeof window !== 'undefined') {
-      let zoomInstance: ReturnType<typeof mediumZoom> | null = null
+      // Create overlay once
+      const overlay = document.createElement('div')
+      overlay.id = 'svg-zoom-overlay'
+      overlay.innerHTML = '<div id="svg-zoom-content"></div><span id="svg-zoom-close">✕</span>'
+      document.body.appendChild(overlay)
 
-      const applyZoom = () => {
-        if (zoomInstance) zoomInstance.detach()
-        zoomInstance = mediumZoom('.mermaid svg, .vp-doc img:not(.no-zoom)', {
-          background: 'rgba(0, 0, 0, 0.85)',
-          margin: 24,
-          scrollOffset: 0,
+      const close = () => {
+        overlay.classList.remove('active')
+        document.getElementById('svg-zoom-content')!.innerHTML = ''
+      }
+
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay || (e.target as HTMLElement).id === 'svg-zoom-close') {
+          close()
+        }
+      })
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') close()
+      })
+
+      const bindZoom = () => {
+        document.querySelectorAll('.mermaid').forEach((el) => {
+          if ((el as HTMLElement).dataset.zoomBound) return
+          ;(el as HTMLElement).dataset.zoomBound = 'true'
+          ;(el as HTMLElement).style.cursor = 'zoom-in'
+          el.addEventListener('click', () => {
+            const svg = el.querySelector('svg')
+            if (!svg) return
+            const content = document.getElementById('svg-zoom-content')!
+            content.innerHTML = svg.outerHTML
+            overlay.classList.add('active')
+          })
         })
       }
 
-      // Watch for DOM changes — covers both initial load and SPA navigation
+      // Observe DOM for new mermaid elements
       const observer = new MutationObserver(() => {
-        const svgs = document.querySelectorAll('.mermaid svg')
-        if (svgs.length > 0) {
-          // Small delay to let all diagrams finish rendering
-          setTimeout(applyZoom, 200)
+        const mermaids = document.querySelectorAll('.mermaid:not([data-zoom-bound])')
+        if (mermaids.length > 0) {
+          setTimeout(bindZoom, 300)
         }
       })
       observer.observe(document.body, { childList: true, subtree: true })
 
-      // Also try immediately in case diagrams are already there
-      setTimeout(applyZoom, 1000)
+      // Initial bind
+      setTimeout(bindZoom, 1000)
     }
   }
 }
