@@ -383,6 +383,34 @@ a:hover {
 }
 
 /* ============================================
+   Mermaid 点击放大
+   ============================================ */
+
+.mermaid {
+  cursor: zoom-in;
+  transition: opacity 0.2s ease;
+}
+
+.mermaid:hover {
+  opacity: 0.92;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* medium-zoom overlay */
+.medium-zoom-overlay {
+  z-index: 100;
+}
+
+.medium-zoom-image--opened {
+  z-index: 101;
+  cursor: zoom-out;
+}
+
+/* ============================================
    Mermaid 暗色模式适配
    ============================================ */
 
@@ -418,6 +446,17 @@ a:hover {
   max-width: 760px !important;
   margin: 0 auto !important;
   padding: 48px 24px 80px !important;
+}
+
+/* 图片点击放大 */
+.vp-doc img:not(.no-zoom) {
+  cursor: zoom-in;
+  border-radius: var(--vp-border-radius);
+  transition: opacity 0.2s ease;
+}
+
+.vp-doc img:not(.no-zoom):hover {
+  opacity: 0.92;
 }
 
 /* Smooth scrolling */

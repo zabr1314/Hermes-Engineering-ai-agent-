@@ -122,6 +122,7 @@ export default withMermaid(defineConfig({
         items: [
           { text: '学习路线图', link: '/附录-知识图谱与路线图/learning-roadmap' },
           { text: '知识图谱与术语表', link: '/附录-知识图谱与路线图/knowledge-graph' },
+          { text: '端到端案例', link: '/附录-知识图谱与路线图/case-study' },
         ],
       },
     ],
