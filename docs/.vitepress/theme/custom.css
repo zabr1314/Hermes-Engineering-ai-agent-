@@ -415,18 +415,19 @@ a:hover {
 }
 
 #svg-zoom-content {
-  max-width: 92vw;
+  width: 92vw;
   max-height: 92vh;
   overflow: auto;
   cursor: default;
 }
 
 #svg-zoom-content svg {
-  width: 100%;
-  height: auto;
+  width: 100% !important;
+  height: auto !important;
+  min-width: 600px;
   background: #fff;
   border-radius: 8px;
-  padding: 24px;
+  padding: 32px;
 }
 
 .dark #svg-zoom-content svg {

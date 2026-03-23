@@ -41,8 +41,15 @@ export default {
           el.addEventListener('click', () => {
             const svg = el.querySelector('svg')
             if (!svg) return
+            const clone = svg.cloneNode(true) as SVGElement
+            // Remove fixed dimensions so SVG can scale up
+            clone.removeAttribute('width')
+            clone.removeAttribute('height')
+            clone.style.width = '100%'
+            clone.style.height = 'auto'
             const content = document.getElementById('svg-zoom-content')!
-            content.innerHTML = svg.outerHTML
+            content.innerHTML = ''
+            content.appendChild(clone)
             overlay.classList.add('active')
           })
         })
