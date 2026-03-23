@@ -5,6 +5,7 @@ export default withMermaid(defineConfig({
   title: 'Hermes Engineering 完全指南',
   description: 'AI 时代的软件工程范式——从 Harness 到多 Agent 系统的设计与实践',
   lang: 'zh-CN',
+  base: '/Hermes-Engineering-ai-agent-/',
 
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
