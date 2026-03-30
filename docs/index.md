@@ -52,6 +52,11 @@ features:
     details: 可观测性、安全执行、Token 预算、断点续传——从实验室到 7×24 线上。
     link: /07-生产实践/
 
+  - icon: 🔧
+    title: ECC 实战篇
+    details: Everything Claude Code 深度解析——从 Hooks 到 Rules，给 Agent 装上操作系统。
+    link: /08-ECC教程/
+
   - icon: 🗺️
     title: 学习路线图
     details: 三种路径：快速入门 / 系统学习 / 前沿热点。挑你的。

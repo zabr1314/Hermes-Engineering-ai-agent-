@@ -28,6 +28,7 @@ export default withMermaid(defineConfig({
       { text: '教程', link: '/01-Harness工程核心原则/' },
       { text: '路线图', link: '/附录-知识图谱与路线图/learning-roadmap' },
       { text: '知识图谱', link: '/附录-知识图谱与路线图/knowledge-graph' },
+      { text: '博客', link: '/blog/' },
     ],
 
     sidebar: [
@@ -115,6 +116,23 @@ export default withMermaid(defineConfig({
           { text: '02 安全执行', link: '/07-生产实践/02-安全执行' },
           { text: '03 成本控制与可靠性', link: '/07-生产实践/03-成本控制与可靠性' },
           { text: '⚡ 速查', link: '/07-生产实践/速查' },
+        ],
+      },
+      {
+        text: '🔧 ECC 教程（实战篇）',
+        collapsed: false,
+        items: [
+          { text: '导读', link: '/08-ECC教程/' },
+          { text: '01 项目全景', link: '/08-ECC教程/01-项目全景' },
+          { text: '02 Hooks 系统', link: '/08-ECC教程/02-Hooks系统' },
+          { text: '03 Agent 系统', link: '/08-ECC教程/03-Agent系统' },
+          { text: '04 Commands 系统', link: '/08-ECC教程/04-Commands系统' },
+          { text: '05 Skills 系统', link: '/08-ECC教程/05-Skills系统' },
+          { text: '06 Continuous Learning', link: '/08-ECC教程/06-Continuous-Learning' },
+          { text: '07 Rules 系统', link: '/08-ECC教程/07-Rules系统' },
+          { text: '08 跨 Harness 适配', link: '/08-ECC教程/08-跨Harness适配' },
+          { text: '09 工程基础设施', link: '/08-ECC教程/09-工程基础设施' },
+          { text: '10 ECC 2.0 与未来', link: '/08-ECC教程/10-ECC-2.0与未来' },
         ],
       },
       {
